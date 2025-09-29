@@ -5,7 +5,6 @@ import './App.css';
 function App() {
     return (
         <div className="App" id="root">
-            <h1>Wuu shaqaynayaa </h1>
             <Dashboard />
         </div>
     );
