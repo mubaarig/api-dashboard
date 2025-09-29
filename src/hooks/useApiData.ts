@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { User, Post, ApiResponse, FilterType } from '../types';
+import type { User, Post, ApiResponse, FilterType } from '../types';
 import { fetchUsers, fetchPosts } from '../utils/api';
 
 export const useApiData = (filter: FilterType) => {
