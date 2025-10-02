@@ -4,6 +4,7 @@ import { FilterBar } from './FilterBar';
 import { DataCard } from './DataCard';
 import { LoadingSpinner } from './LoadingSpinner';
 import { ErrorMessage } from './ErrorMessage';
+import { ThemeToggle } from './ThemeToggle';
 import type { FilterType } from '../types';
 
 export const Dashboard: React.FC = () => {
@@ -14,15 +15,20 @@ export const Dashboard: React.FC = () => {
     const showPosts = filter === 'all' || filter === 'posts';
 
     return (
-        <div className="min-h-screen bg-gray-100 p-6">
+        <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200 p-6">
             <div className="max-w-7xl mx-auto">
                 <header className="mb-8">
-                    <h1 className="text-3xl font-bold text-gray-900 mb-2">
-                        Interactive API Dashboard
-                    </h1>
-                    <p className="text-gray-600">
-                        Explore users and posts from JSONPlaceholder API
-                    </p>
+                    <div className="flex justify-between items-start mb-4">
+                        <div>
+                            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                                Interactive API Dashboard
+                            </h1>
+                            <p className="text-gray-600 dark:text-gray-400">
+                                Explore users and posts from JSONPlaceholder API
+                            </p>
+                        </div>
+                        <ThemeToggle />
+                    </div>
                 </header>
 
                 <FilterBar currentFilter={filter} onFilterChange={setFilter} />
@@ -30,7 +36,7 @@ export const Dashboard: React.FC = () => {
                 <div className="grid gap-6">
                     {showUsers && (
                         <section>
-                            <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+                            <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
                                 Users ({users.data?.length || 0})
                             </h2>
                             {users.loading && <LoadingSpinner />}
@@ -47,7 +53,7 @@ export const Dashboard: React.FC = () => {
 
                     {showPosts && (
                         <section>
-                            <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+                            <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
                                 Posts ({posts.data?.length || 0})
                             </h2>
                             {posts.loading && <LoadingSpinner />}
